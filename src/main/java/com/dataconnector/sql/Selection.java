@@ -9,6 +9,6 @@ package com.dataconnector.sql;
  *
  * @author proveedor_hhurtado
  */
-public interface Selection extends TupleElement{
+public interface Selection {
     
 }

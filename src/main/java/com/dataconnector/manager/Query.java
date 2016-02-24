@@ -3,19 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.dataconnector.sql;
+package com.dataconnector.manager;
 
-import java.util.List;
+import com.dataconnector.annotation.DataConnectorPOJO;
 
 /**
  *
  * @author proveedor_hhurtado
+ * @param <X>
  */
-public interface CriterialQuery {
-
-    CriterialQuery select(Selection... params);
-
-    CriterialQuery where(Predicate... params);
-
-    CriterialQuery from(List<Root> entities);
+public interface Query <X extends Object> {
+    
+  X  getSingleResult();
 }

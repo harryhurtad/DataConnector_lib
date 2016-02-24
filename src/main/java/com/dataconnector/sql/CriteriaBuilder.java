@@ -5,11 +5,13 @@
  */
 package com.dataconnector.sql;
 
+import com.dataconnector.criteria.CriteriaQuery;
+
 /**
  *
  * @author proveedor_hhurtado
  */
-public interface CriterialBuilder {
+public interface CriteriaBuilder {
     Predicate and(Expression param1 ,Expression param2 );
     Predicate and(Predicate... parametros  );
     Predicate or(Expression param1 ,Expression param2);
@@ -28,6 +30,6 @@ public interface CriterialBuilder {
     Predicate isNotNull(Expression param1,Expression param2);
     Predicate IN(String[] value);
     
-    CriterialQuery createQuery();
+    CriteriaQuery createQuery();
     
 }

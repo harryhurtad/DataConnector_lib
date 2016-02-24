@@ -9,6 +9,6 @@ package com.dataconnector.sql;
  *
  * @author proveedor_hhurtado
  */
-public interface Root extends Form {
+public interface Root extends Expression {
     Expression get(String nombreParametro);
 }

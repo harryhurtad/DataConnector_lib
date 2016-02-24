@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.dataconnector.sql;
+package com.dataconnector.object;
 
 /**
  *
  * @author proveedor_hhurtado
  */
-public interface Expression extends Selection   {
-     
+public class ValueUpdate {
+    
 }

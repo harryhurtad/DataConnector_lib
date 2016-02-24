@@ -11,7 +11,7 @@ import java.util.List;
  *
  * @author proveedor_hhurtado
  */
-public interface Predicate extends TupleElement {
+public interface Predicate extends Expression {
     void setOperation(OperationEnum operation);
     OperationEnum getOperation(); 
     StringBuilder getSql();

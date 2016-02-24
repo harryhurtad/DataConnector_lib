@@ -9,6 +9,6 @@ package com.dataconnector.sql;
  *
  * @author proveedor_hhurtado
  */
-public interface Expression extends Selection   {
-     
+public interface Order {
+    
 }
