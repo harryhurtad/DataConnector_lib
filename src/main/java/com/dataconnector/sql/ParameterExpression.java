@@ -6,9 +6,14 @@
 package com.dataconnector.sql;
 
 /**
+ * Interfaz que representa un Parametro de una sentencia SQL
  *
- * @author proveedor_hhurtado
+ * @version $Revision: 1.1.1 (UTF-8)
+ * @since build 23/02/2016
+ * @author proveedor_hhurtado email: proveedor_hhurtad@ath.com.co
  */
-public interface ParameterExpression extends Parameter,Expression{
+public interface ParameterExpression<X> extends Expression{
     
+    String getNombreParametro();
+    <X extends Object>Class<X> getParameterType();
 }

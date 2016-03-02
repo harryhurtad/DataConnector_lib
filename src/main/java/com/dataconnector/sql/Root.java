@@ -5,10 +5,18 @@
  */
 package com.dataconnector.sql;
 
+import com.dataconnector.object.JoinsTypeEnum;
+import com.dataconnector.object.ValueRoot;
+import java.util.List;
+
 /**
  *
  * @author proveedor_hhurtado
  */
 public interface Root extends Expression {
-    Expression get(String nombreParametro);
+    ValueRoot get(String nombreParametro);
+    Join joinTable(String nameTableJoin,JoinsTypeEnum typeJoin); 
+    String getNombreTabla();
+    List<Join> getListJoins();
+   
 }

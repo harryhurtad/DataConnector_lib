@@ -6,9 +6,11 @@
 package com.dataconnector.criteria.insert;
 
 /**
- *
- * @author proveedor_hhurtado
+ *Interfaz que permite la creacion de sentencias insert genericas
+ * @version $Revision: 1.1.1  (UTF-8)
+ * @since build 24/02/2016  
+ * @author proveedor_hhurtado  email: proveedor_hhurtad@ath.com.co
  */
-public interface CriteriaInsert {
+public interface CriteriaInsert extends CommonAbstractInsert {
     
 }

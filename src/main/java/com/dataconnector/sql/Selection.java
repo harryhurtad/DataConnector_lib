@@ -6,9 +6,16 @@
 package com.dataconnector.sql;
 
 /**
+ * Interfaz que representa a los objectos que hacen parte de una sentecia sql
  *
- * @author proveedor_hhurtado
+ * @version $Revision: 1.1.1 (UTF-8)
+ * @since build 23/02/2016
+ * @author proveedor_hhurtado email: proveedor_hhurtad@ath.com.co
  */
 public interface Selection {
-    
+
+    String getAlias();
+
+    StringBuilder getSQLTransalte();
+
 }

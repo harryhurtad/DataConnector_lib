@@ -6,9 +6,23 @@
 package com.dataconnector.object;
 
 /**
+ * Enum que representa los tipos de Joins posibles a realizar en sql
  *
- * @author proveedor_hhurtado
+ * @version $Revision: 1.1.1 (UTF-8)
+ * @since build 23/02/2016
+ * @author proveedor_hhurtado email: proveedor_hhurtad@ath.com.co
  */
 public enum JoinsTypeEnum {
-    
+    INNER_JOIN("INNER"),RIGTH_JOIN("RIGTH"),LEFT_JOIN("LEFT");
+     private final String nameElement;
+
+    private JoinsTypeEnum(String nameElement) {
+        this.nameElement = nameElement;
+    }
+
+    public String getNameElement() {
+        return nameElement;
+    }
+     
+     
 }

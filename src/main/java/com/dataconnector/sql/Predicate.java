@@ -5,6 +5,7 @@
  */
 package com.dataconnector.sql;
 
+import com.dataconnector.object.ValueRoot;
 import java.util.List;
 
 /**
@@ -13,7 +14,6 @@ import java.util.List;
  */
 public interface Predicate extends Expression {
     void setOperation(OperationEnum operation);
-    OperationEnum getOperation(); 
-    StringBuilder getSql();
-    void setListExpression(List<Expression> listExp);
+    OperationEnum getOperation();    
+    List<Expression> getListExpression();
 }

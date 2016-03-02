@@ -4,14 +4,19 @@
  * and open the template in the editor.
  */
 
-package com.dataconnector.criteria.insert;
+package com.dataconnector.sql;
+
+import com.dataconnector.object.ValueRoot;
+import java.util.List;
 
 /**
- *Interfaz que permite la creacion de sentencias insert basados en el motor de SQLServer
+ *Interfaz que representa el wrapper  de Retorno para la sentecia JOIN
  * @version $Revision: 1.1.1  (UTF-8)
- * @since build 24/02/2016  
+ * @since build 1/03/2016  
  * @author proveedor_hhurtado  email: proveedor_hhurtad@ath.com.co
  */
-public interface CriteriaInsertSQLServer extends CommonAbstractInsert {
-
+public interface JoinPredicate  extends Predicate{   
+      
+    
+    
 }

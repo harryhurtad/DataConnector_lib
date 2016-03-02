@@ -6,9 +6,11 @@
 package com.dataconnector.criteria;
 
 /**
- *
- * @author proveedor_hhurtado
+ *Interfaz que representa y permite la creación de un query adaptado a la BD Oracle
+ * @version $Revision: 1.1.1  (UTF-8)
+ * @since build 26/02/2016  
+ * @author proveedor_hhurtado  email: proveedor_hhurtad@ath.com.co
  */
-public interface CriteriaQueryOracle {
+public interface CriteriaQueryOracle extends AbstractQuery{
     
 }

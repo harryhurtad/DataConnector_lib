@@ -5,20 +5,32 @@
  */
 package com.dataconnector.criteria;
 
+import com.dataconnector.sql.Order;
 import com.dataconnector.sql.Predicate;
 import com.dataconnector.sql.Root;
 import com.dataconnector.sql.Selection;
 import java.util.List;
 
 /**
- *
- * @author proveedor_hhurtado
+ * Clase concreta que representa y permite la creación de query para una bd generica
+ * @version $Revision: 1.1.1  (UTF-8)
+ * @since build 26/02/2016  
+ * @author proveedor_hhurtado  email: proveedor_hhurtad@ath.com.co
  */
-public interface CriteriaQuery {
+public interface CriteriaQuery extends AbstractQuery{
 
+  
     CriteriaQuery select(Selection... params);
 
-    CriteriaQuery where(Predicate... params);
+    @Override
+    CriteriaQuery where(Predicate params);
+    
+    @Override
+    Root from(String nombreTabla);
+    
+    @Override
+    CriteriaQuery orderBy(Order... ord);
+    
 
-    CriteriaQuery from(List<Root> entities);
+    //CriteriaQuery from(List<Root> entities);
 }

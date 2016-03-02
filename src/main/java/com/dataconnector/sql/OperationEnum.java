@@ -6,8 +6,11 @@
 package com.dataconnector.sql;
 
 /**
+ * Enum que representa los operadores y predicados utilizados en el lenguaje SQL
  *
- * @author proveedor_hhurtado
+ * @version $Revision: 1.1.1 (UTF-8)
+ * @since build 23/02/2016
+ * @author proveedor_hhurtado email: proveedor_hhurtad@ath.com.co
  */
 public enum OperationEnum {
 
@@ -76,4 +79,9 @@ public enum OperationEnum {
         return simbolo;
     }
 
+    public String getSimboloOper() {
+        return simboloOper;
+    }
+
+    
 }

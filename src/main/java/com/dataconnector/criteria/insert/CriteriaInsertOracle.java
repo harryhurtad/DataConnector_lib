@@ -7,11 +7,11 @@
 package com.dataconnector.criteria.insert;
 
 /**
- *{Insert class description here}
+ *Interfaz que permite la creacion de sentencias insert basados en el motor de Oracle
  * @version $Revision: 1.1.1  (UTF-8)
  * @since build 24/02/2016  
  * @author proveedor_hhurtado  email: proveedor_hhurtad@ath.com.co
  */
-public interface CriteriaInsertOracle {
+public interface CriteriaInsertOracle extends CommonAbstractInsert {
 
 }
