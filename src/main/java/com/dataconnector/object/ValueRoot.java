@@ -5,7 +5,10 @@
  */
 package com.dataconnector.object;
 
+import com.dataconnector.sql.AliasExpression;
 import com.dataconnector.sql.Expression;
+import com.dataconnector.sql.Selection;
+
 
 /**
  * Clase que representa una tributo de una tabla(Campos)
@@ -14,28 +17,51 @@ import com.dataconnector.sql.Expression;
  * @since build 23/02/2016
  * @author proveedor_hhurtado email: proveedor_hhurtad@ath.com.co
  */
-public class ValueRoot implements Expression {
+public class ValueRoot implements Expression,AliasExpression {
 
     private final StringBuilder concat;
-    private final String alias;
+    private final String aliasTable;
+    private  String aliasField="";
+    private final String ALIAS_SIMBOLO="AS";
+    
 
     public ValueRoot(String alias, String nameTable) {
-        this.alias = alias;
+        this.aliasTable = alias;
         concat = new StringBuilder();
         concat.append(alias);
         concat.append(".");
         concat.append(nameTable);
     }
 
+    public String getAliasTable() {
+        return aliasTable;
+    }
+
+    
+    
+    public void proccessAlias(){
+        concat.append(" ");
+        concat.append(ALIAS_SIMBOLO);
+        concat.append(" ");
+        concat.append(getAlias());
+    }
+    
+    
     @Override
     public String getAlias() {
 
-        return alias;
+        return aliasField;
     }
 
     @Override
     public StringBuilder getSQLTransalte() {
         return concat;
+    }
+
+    @Override
+    public Selection alias(String value) {
+       this.aliasField=value;
+       return this;
     }
 
 }

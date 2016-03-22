@@ -5,6 +5,11 @@
  */
 package com.dataconnector.criteria;
 
+import com.dataconnector.sql.Order;
+import com.dataconnector.sql.Predicate;
+import com.dataconnector.sql.Root;
+import com.dataconnector.sql.Selection;
+
 /**
  *Interfaz que representa y permite la creación de un query adaptado a la BD SQLServer
  * @version $Revision: 1.1.1  (UTF-8)
@@ -12,5 +17,20 @@ package com.dataconnector.criteria;
  * @author proveedor_hhurtado  email: proveedor_hhurtad@ath.com.co
  */
 public interface CriteriaQuerySQLServer extends AbstractQuery{
+    
+    
+    CriteriaQuerySQLServer select(Selection... params);
+
+    @Override
+    CriteriaQuerySQLServer where(Predicate params);
+    
+    @Override
+    Root from(String nombreTabla);
+    
+    @Override
+    CriteriaQuerySQLServer orderBy(Order... ord);
+    
+    
+    
     
 }

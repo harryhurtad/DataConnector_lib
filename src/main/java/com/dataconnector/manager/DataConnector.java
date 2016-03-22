@@ -5,6 +5,7 @@
  */
 package com.dataconnector.manager;
 
+import com.dataconnector.exceptions.InitialCtxDataConnectorException;
 import com.dataconnector.helper.DataConnectorHelper;
 import com.dataconnector.object.ProvidersSupportEnum;
 import com.dataconnector.sql.ProviderDataConnector;
@@ -23,7 +24,7 @@ public class DataConnector {
 
     }
 
-    public static DataConnectorFactory createDataConnectorFactory(String unidad, ProvidersSupportEnum providerEnum) throws Exception {
+    public static DataConnectorFactory createDataConnectorFactory(String unidad, ProvidersSupportEnum providerEnum) throws Exception  {
         DataConnectorFactory interfaceType = null;
         try {
             // Se realiza la instanciacion del provider
@@ -38,6 +39,9 @@ public class DataConnector {
             DataConnectorHelper.getInstance().invokeMethod(interfaceType, provider, new Class[]{AbstractDataConnectorManager.class}, "setDataConnectorManager", manager);
         } catch (InstantiationException | IllegalAccessException | ClassNotFoundException ex) {
             Logger.getLogger(DataConnector.class.getName()).log(Level.SEVERE, null, ex);
+            
+        }catch( InitialCtxDataConnectorException ex){
+            throw ex;
         }
         return interfaceType;
     }

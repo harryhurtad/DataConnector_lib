@@ -10,6 +10,7 @@ import com.dataconnector.criteria.delete.CriteriaDelete;
 import com.dataconnector.criteria.insert.CriteriaInsert;
 import com.dataconnector.criteria.update.CriteriaUpdate;
 import com.dataconnector.sql.CriteriaBuilder;
+import java.sql.Connection;
 
 /**
  *{Insert class description here}
@@ -30,4 +31,5 @@ public interface DataConnectorManager extends AbstractDataConnectorManager{
     Query createQuery(CriteriaUpdate q);
     
  
+   
 }

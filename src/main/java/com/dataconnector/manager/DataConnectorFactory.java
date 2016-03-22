@@ -7,6 +7,7 @@ package com.dataconnector.manager;
 
 import com.dataconnector.sql.CriteriaBuilder;
 import com.dataconnector.criteria.CriteriaQuery;
+import com.dataconnector.exceptions.InitialCtxDataConnectorException;
 
 /**
  *
@@ -15,7 +16,9 @@ import com.dataconnector.criteria.CriteriaQuery;
 public interface DataConnectorFactory {
 
     AbstractDataConnectorManager getDataConnectorManager();
-    void initialContext();
+    void initialContext() throws InitialCtxDataConnectorException;
+    void initTransaction();
+    void closeTransaction();
     
   
 }

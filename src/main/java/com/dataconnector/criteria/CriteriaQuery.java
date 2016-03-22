@@ -31,6 +31,7 @@ public interface CriteriaQuery extends AbstractQuery{
     @Override
     CriteriaQuery orderBy(Order... ord);
     
+   
 
     //CriteriaQuery from(List<Root> entities);
 }

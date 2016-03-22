@@ -25,4 +25,6 @@ public interface AbstractQuery {
     Root from(String nombreTabla);
 
     AbstractQuery orderBy(Order... ord);
+    
+      public Class getClassToCreate() ;
 }

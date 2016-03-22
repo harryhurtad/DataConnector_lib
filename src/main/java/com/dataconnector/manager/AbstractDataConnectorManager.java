@@ -9,6 +9,7 @@ import com.dataconnector.criteria.AbstractQuery;
 import com.dataconnector.criteria.delete.CommonAbstractDelete;
 import com.dataconnector.criteria.update.CommonAbstractUpdate;
 import com.dataconnector.sql.CriteriaBuilder;
+import java.sql.Connection;
 
 /**
  *
@@ -18,7 +19,7 @@ public interface AbstractDataConnectorManager {
 
     CriteriaBuilder getCriterialBuilder();
 
-   
+     Connection getConnection();
     
     String QuiEst();
 

@@ -80,7 +80,7 @@ public interface CriteriaBuilder {
 
     ValueExpression value(Class obj, Object element);
 
-    AbstractQuery createQuery(Object paramRetorno);
+    AbstractQuery createQuery(Class paramRetorno);
 
     CommonAbstractInsert createInserQueryFactory();
 

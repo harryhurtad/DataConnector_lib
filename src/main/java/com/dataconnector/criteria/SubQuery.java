@@ -5,6 +5,7 @@
  */
 package com.dataconnector.criteria;
 
+import com.dataconnector.sql.AliasExpression;
 import com.dataconnector.sql.Expression;
 import com.dataconnector.sql.Order;
 import com.dataconnector.sql.Predicate;
@@ -17,7 +18,7 @@ import com.dataconnector.sql.Selection;
  * @since build 26/02/2016  
  * @author proveedor_hhurtado  email: proveedor_hhurtad@ath.com.co
  */
-public interface SubQuery extends AbstractQuery,Expression  {
+public interface SubQuery extends AbstractQuery,Expression,AliasExpression  {
 
     
     SubQuery select(Selection params);
