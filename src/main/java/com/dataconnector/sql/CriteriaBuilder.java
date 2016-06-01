@@ -46,6 +46,7 @@ public interface CriteriaBuilder {
 
     JoinPredicate equal(ValueRoot param1, ValueRoot param2);
 
+    JoinPredicate equal(ValueRoot param1, Expression param2);
     Predicate notEqual(Expression param1, Expression param2);
 
     JoinPredicate notEqual(ValueRoot param1, ValueRoot param2);
@@ -82,7 +83,7 @@ public interface CriteriaBuilder {
 
     AbstractQuery createQuery(Class paramRetorno);
 
-    CommonAbstractInsert createInserQueryFactory();
+    CommonAbstractInsert createInserQuery();
 
     CommonAbstractDelete createDeleterQueryFactory();
 

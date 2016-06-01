@@ -15,10 +15,8 @@ import com.dataconnector.exceptions.InitialCtxDataConnectorException;
  */
 public interface DataConnectorFactory {
 
-    AbstractDataConnectorManager getDataConnectorManager();
-    void initialContext() throws InitialCtxDataConnectorException;
-    void initTransaction();
-    void closeTransaction();
-    
+    AbstractDataConnectorManager getInstanceDataConnectorManager();
+   
+ 
   
 }

@@ -5,7 +5,8 @@
  */
 package com.dataconnector.manager;
 
-import com.dataconnector.criteria.CriteriaQueryOracle;
+import com.dataconnector.query.Query;
+import com.dataconnector.criteria.CriteriaQuery;
 import com.dataconnector.criteria.delete.CriteriaDeleteOracle;
 import com.dataconnector.criteria.insert.CriteriaInsertOracle;
 import com.dataconnector.criteria.update.CriteriaUpdateOracle;
@@ -16,7 +17,7 @@ import com.dataconnector.criteria.update.CriteriaUpdateOracle;
  */
 public interface DataConnectorOracleManager extends AbstractDataConnectorManager {
 
-    Query  createQuery(CriteriaQueryOracle q);
+    Query  createQuery(CriteriaQuery q);
 
     Query createQuery(CriteriaInsertOracle q);
 

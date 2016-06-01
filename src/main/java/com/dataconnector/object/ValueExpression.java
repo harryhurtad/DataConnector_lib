@@ -6,6 +6,7 @@
 
 package com.dataconnector.object;
 
+import com.dataconnector.helper.DataConnectorHelper;
 import com.dataconnector.sql.Expression;
 
 /**
@@ -53,7 +54,7 @@ public class ValueExpression implements Expression{
     @Override
     public StringBuilder getSQLTransalte() {
         StringBuilder sb=new StringBuilder();
-        sb.append(element);
+        sb.append(DataConnectorHelper.getInstance().transformValue(element, type));
         return sb;
     }
     

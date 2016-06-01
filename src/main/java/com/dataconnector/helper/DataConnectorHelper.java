@@ -5,8 +5,14 @@
  */
 package com.dataconnector.helper;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -33,7 +39,7 @@ public class DataConnectorHelper {
         return instance;
     }
 
-    public Object invokeMethod(Object instance, String nombreClase, Class[] parameters, String nameMethod, Object value) throws Exception {
+    public Object invokeMethod(Object instance, String nombreClase, Class[] parameters, String nameMethod, Object[] value) throws Exception {
         Object retorno = null;
         try {
             //Invoca y crea una instancia de la clase
@@ -68,5 +74,47 @@ public class DataConnectorHelper {
                 + "|_______/|__/  |__/  |__/ |__/  |__/       \\______/ \\______/|__/  \\__|__/  \\__|________/\\______/   |__/  \\______/|__/  |__/\n"
                 + "                                                                                                                           \n"
                 + "                                                                                                                         ");
+    }
+
+    /**
+     *
+     * @param propFileName
+     * @return
+     * @throws FileNotFoundException
+     */
+    public Properties readPropertiesDataConnector(final String propFileName) throws FileNotFoundException, IOException {
+        Properties prop = new Properties();
+
+        try (InputStream inputStream = getClass().getClassLoader().getResourceAsStream(propFileName);) {
+
+            if (inputStream != null) {
+                prop.load(inputStream);
+            } else {
+                throw new FileNotFoundException("property file '" + propFileName + "' not found in the classpath");
+            }
+
+        } 
+
+        return prop;
+    }
+    
+    
+    public String transformValue(Object value,Class type){
+        String valueReturn="";
+        
+        if(type.equals(Date.class)){
+            SimpleDateFormat format=new SimpleDateFormat("yyyy-mm-dd");
+            valueReturn="'"+format.format((Date)value)+"'";
+        }else if(type.equals(String.class)){
+            valueReturn="'"+(String)value+"'";        }
+        else if(type.equals(int.class)||type.equals(long.class)||type.equals(byte.class)||type.equals(double.class)){
+            valueReturn=""+value;
+        
+        }else{
+            valueReturn=value.toString();
+        }
+        
+        return valueReturn;
+    
     }
 }

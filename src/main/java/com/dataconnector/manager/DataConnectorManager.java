@@ -5,6 +5,7 @@
  */
 package com.dataconnector.manager;
 
+import com.dataconnector.query.Query;
 import com.dataconnector.criteria.CriteriaQuery;
 import com.dataconnector.criteria.delete.CriteriaDelete;
 import com.dataconnector.criteria.insert.CriteriaInsert;

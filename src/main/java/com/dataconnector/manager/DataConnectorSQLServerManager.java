@@ -6,7 +6,9 @@
 
 package com.dataconnector.manager;
 
-import com.dataconnector.criteria.CriteriaQuerySQLServer;
+import com.dataconnector.query.Query;
+import com.dataconnector.query.SQLServerQuery;
+import com.dataconnector.criteria.CriteriaQuery;
 import com.dataconnector.criteria.delete.CriteriaDeleteSQLServer;
 import com.dataconnector.criteria.insert.CriteriaInsertSQLServer;
 import com.dataconnector.criteria.update.CriteriaUpdateSQLServer;
@@ -21,7 +23,7 @@ import com.dataconnector.criteria.update.CriteriaUpdateSQLServer;
  */
 public interface DataConnectorSQLServerManager extends AbstractDataConnectorManager{
 
-     Query createQuery(CriteriaQuerySQLServer q);
+    SQLServerQuery createQuery(CriteriaQuery q);
 
     Query createQuery(CriteriaInsertSQLServer q);
 
