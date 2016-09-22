@@ -5,6 +5,8 @@
  */
 package com.dataconnector.sql;
 
+import com.dataconnector.commons.metadata.MetadataFieldDataConnector;
+import com.dataconnectorcommons.sql.Expression;
 import com.dataconnector.object.JoinsTypeEnum;
 import com.dataconnector.object.ValueRoot;
 import java.util.List;
@@ -14,7 +16,7 @@ import java.util.List;
  * @author proveedor_hhurtado
  */
 public interface Root extends Expression {
-    ValueRoot get(String nombreParametro);
+    ValueRoot get(MetadataFieldDataConnector nombreParametro);
     Join joinTable(String nameTableJoin,JoinsTypeEnum typeJoin); 
     String getNombreTabla();
     List<Join> getListJoins();

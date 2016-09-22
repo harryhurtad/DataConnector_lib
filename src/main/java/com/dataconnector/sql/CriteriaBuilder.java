@@ -5,6 +5,7 @@
  */
 package com.dataconnector.sql;
 
+import com.dataconnectorcommons.sql.Expression;
 import com.dataconnector.criteria.AbstractQuery;
 import com.dataconnector.criteria.CriteriaQuery;
 import com.dataconnector.criteria.SubQuery;

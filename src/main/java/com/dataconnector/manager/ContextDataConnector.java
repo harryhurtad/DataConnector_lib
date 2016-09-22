@@ -4,18 +4,17 @@
  * and open the template in the editor.
  */
 
-package com.dataconnector.sql;
+package com.dataconnector.manager;
 
-import com.dataconnectorcommons.sql.Expression;
-import com.dataconnector.object.ValueRoot;
+import com.dataconnector.constans.ProvidersSupportEnum;
 
 /**
  *{Insert class description here}
  * @version $Revision: 1.1.1  (UTF-8)
- * @since build 23/03/2016  
+ * @since build 10/06/2016  
  * @author proveedor_hhurtado  email: proveedor_hhurtad@ath.com.co
  */
-public interface CriteriaSQLServerBuilder extends CriteriaBuilder{
-
-    Expression rowNumber(ValueRoot field,String alias);
+public interface ContextDataConnector {
+    public DataConnectorConnection getConnection() ;
+    ProvidersSupportEnum getProvider();
 }

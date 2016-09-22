@@ -6,11 +6,12 @@
 package com.dataconnector.manager;
 
 import com.dataconnector.exceptions.InitialCtxDataConnectorException;
-import com.dataconnector.helper.DataConnectorHelper;
+import com.dataconnector.commons.helper.DataConnectorHelper;
 import com.dataconnector.constans.ProvidersSupportEnum;
-import com.dataconnector.helper.DataConnectorConWrap;
 import com.dataconnector.sql.ProviderDataConnector;
 import com.dataconnector.sql.ProviderDataConnector;
+import java.io.File;
+import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.Driver;
 import java.util.logging.Level;
@@ -34,17 +35,18 @@ public class DataConnector {
      * @param providerEnum
      * @return
      */
-    public static InitialContextDataConnector getInitialContextDataConnector(DataSource dataSource, ProvidersSupportEnum providerEnum) {
+    public static InitialContextDataConnector getInitialContextDataConnector() {
         InitialContextDataConnector initialContextDataConnector = null;
         try {
             //Crea Wrapper del driver
-            String classNameWrapper = "com.dataconnector.helper.DataConnectorConWrap";
-            Class classWrapper = Class.forName(classNameWrapper);
-            Object connWrapper = classWrapper.getConstructor(new Class[]{String.class, DataSource.class, ProvidersSupportEnum.class}).newInstance(null, dataSource, providerEnum);
-
+           // String classNameWrapper = "com.dataconnector.helper.DataConnectorConWrap";
+           // Class classWrapper = Class.forName(classNameWrapper);
+           // Object connWrapper = classWrapper.getConstructor(new Class[]{String.class, DataSource.class, ProvidersSupportEnum.class}).newInstance(null, dataSource, providerEnum);
+        //    File descrDataConnector=new File(DataConnector.class.getResource("/META-INF/DataConnector-conf.xml").getFile());
+            InputStream in =DataConnector.class.getResourceAsStream("/META-INF/DataConnector-conf.xml"); 
             String classContext = "com.dataconnector.context.InitialContextDataconnectorImpl";
             Class classInitialContext = Class.forName(classContext);
-            initialContextDataConnector = (InitialContextDataConnector) classInitialContext.getConstructor(new Class[]{classWrapper}).newInstance(connWrapper);
+            initialContextDataConnector = (InitialContextDataConnector) classInitialContext.getConstructor(new Class[]{InputStream.class}).newInstance(in);
             initialContextDataConnector.initialContext();
 
             return initialContextDataConnector;
@@ -58,17 +60,18 @@ public class DataConnector {
      * Realiza la creación de la clase factory del DataConnector
      * @param providerEnum
      * @param context
+     * @param dataConnectorUnitName
      * @return DataConnectorFactory
      */
-    public static DataConnectorFactory createDataConnectorFactory(ProvidersSupportEnum providerEnum, InitialContextDataConnector context) {
+    public static DataConnectorFactory createDataConnectorFactory(String dataConnectorUnitName) {
 
         DataConnectorFactory interfaceType = null;
 
         try {
 
-            interfaceType = getDataConnectorFactory(providerEnum, context.getDataConnectorConWrap(), context);
+            interfaceType = getDataConnectorFactory( dataConnectorUnitName);
 
-        } catch (ClassNotFoundException | NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
+        } catch (NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
             Logger.getLogger(DataConnector.class.getName()).log(Level.SEVERE, null, ex);
         } catch (Exception ex) {
             Logger.getLogger(DataConnector.class.getName()).log(Level.SEVERE, null, ex);
@@ -83,7 +86,7 @@ public class DataConnector {
      * @return DataConnectorFactory
      * @throws Exception
      */
-    public static DataConnectorFactory createDataConnectorFactory(String driver, ProvidersSupportEnum providerEnum) throws Exception {
+  /*  public static DataConnectorFactory createDataConnectorFactory(String driver, ProvidersSupportEnum providerEnum) throws Exception {
         DataConnectorFactory interfaceType = null;
         InitialContextDataConnector initialContextDataConnector = null;
         try {
@@ -104,7 +107,7 @@ public class DataConnector {
             throw ex;
         }
         return interfaceType;
-    }
+    }*/
 
     /**
      * Realiza la invocación y configruación del factory
@@ -116,17 +119,17 @@ public class DataConnector {
      * @throws NoSuchMethodException
      * @throws Exception 
      */
-    private static DataConnectorFactory getDataConnectorFactory(ProvidersSupportEnum providerEnum, DataConnectorConWrap wrapper, InitialContextDataConnector context) throws ClassNotFoundException, NoSuchMethodException, Exception {
+    private static DataConnectorFactory getDataConnectorFactory( String dataConnectorUnitName ) throws ClassNotFoundException, NoSuchMethodException, Exception {
         DataConnectorFactory interfaceType = null;
 
         // Se realiza la instanciacion del provider
         String provider = "com.dataconnector.core.DataConnectorFactoryImpl";
         Class c = Class.forName(provider);
-        interfaceType = (DataConnectorFactory) c.getConstructor(InitialContextDataConnector.class).newInstance(context);
+        interfaceType = (DataConnectorFactory) c.getConstructor(String.class).newInstance(dataConnectorUnitName);
             //    objClass.getConstructor(new Class[]{String.class}).newInstance(new Object[]{""+rs.getString(param.getNombreParametro())});
 
         //Invoca la instancia de manager correspondiente al driver 
-        AbstractDataConnectorManager manager = (AbstractDataConnectorManager) DataConnectorHelper.getInstance().invokeMethod(interfaceType, provider, new Class[]{ProvidersSupportEnum.class, wrapper.getClass()}, "getDataConnectorManager", new Object[]{providerEnum, wrapper});
+        AbstractDataConnectorManager manager = (AbstractDataConnectorManager) DataConnectorHelper.getInstance().invokeMethod(interfaceType, provider, new Class[]{ dataConnectorUnitName.getClass()}, "getDataConnectorManager", new Object[]{ dataConnectorUnitName});
         //setDataConnectorManager
         DataConnectorHelper.getInstance().invokeMethod(interfaceType, provider, new Class[]{AbstractDataConnectorManager.class}, "setDataConnectorManager", new Object[]{manager});
 

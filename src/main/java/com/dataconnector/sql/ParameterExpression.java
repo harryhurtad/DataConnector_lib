@@ -5,6 +5,8 @@
  */
 package com.dataconnector.sql;
 
+import com.dataconnectorcommons.sql.Expression;
+
 /**
  * Interfaz que representa un Parametro de una sentencia SQL
  *

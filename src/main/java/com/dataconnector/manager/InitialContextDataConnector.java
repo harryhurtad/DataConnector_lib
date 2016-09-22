@@ -7,7 +7,6 @@
 package com.dataconnector.manager;
 
 import com.dataconnector.exceptions.InitialCtxDataConnectorException;
-import com.dataconnector.helper.DataConnectorConWrap;
 import java.util.Map;
 
 /**
@@ -18,8 +17,8 @@ import java.util.Map;
  */
 public interface InitialContextDataConnector {
 
-     Map getMapObjectProccess();
+   
      void initialContext() throws InitialCtxDataConnectorException;
-     DataConnectorConWrap getDataConnectorConWrap();
+     
     
 }

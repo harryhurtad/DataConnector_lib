@@ -5,10 +5,11 @@
  */
 package com.dataconnector.criteria;
 
+import com.dataconnector.exceptions.DataConnectorQueryException;
 import com.dataconnector.sql.Order;
 import com.dataconnector.sql.Predicate;
 import com.dataconnector.sql.Root;
-import com.dataconnector.sql.Selection;
+import com.dataconnectorcommons.sql.Selection;
 
 /**
  * Interfaz que representa los elementos esenciales para la creacion del query SQL
@@ -22,7 +23,7 @@ public interface AbstractQuery {
 
     AbstractQuery where(Predicate params);
 
-    Root from(String nombreTabla);
+    Root from(Class nombreTabla)throws DataConnectorQueryException;
 
     AbstractQuery orderBy(Order... ord);
     

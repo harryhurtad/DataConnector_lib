@@ -6,8 +6,8 @@
 
 package com.dataconnector.object;
 
-import com.dataconnector.helper.DataConnectorHelper;
-import com.dataconnector.sql.Expression;
+import com.dataconnector.commons.helper.DataConnectorHelper;
+import com.dataconnectorcommons.sql.Expression;
 
 /**
  *Clase que representa los valores constantes de diferentes tipo

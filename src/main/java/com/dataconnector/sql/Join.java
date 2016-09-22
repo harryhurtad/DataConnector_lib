@@ -5,6 +5,7 @@
  */
 package com.dataconnector.sql;
 
+import com.dataconnector.commons.metadata.MetadataFieldDataConnector;
 import com.dataconnector.object.ValueRoot;
 
 /**
@@ -22,7 +23,7 @@ public interface Join {
 
     Join where(Predicate p);
 
-    ValueRoot get(String nombreParametro);
+    ValueRoot get(MetadataFieldDataConnector nombreParametro);
 
     StringBuilder getSQLTransalte();
 }

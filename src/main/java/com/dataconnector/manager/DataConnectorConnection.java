@@ -4,15 +4,14 @@
  * and open the template in the editor.
  */
 
-package com.dataconnector.sql;
+package com.dataconnector.manager;
 
 /**
  *{Insert class description here}
  * @version $Revision: 1.1.1  (UTF-8)
- * @since build 15/03/2016  
+ * @since build 10/06/2016  
  * @author proveedor_hhurtado  email: proveedor_hhurtad@ath.com.co
  */
-public interface AliasExpression {
-
-    Selection alias(String value);
+public interface DataConnectorConnection {
+     String getDriverName();
 }

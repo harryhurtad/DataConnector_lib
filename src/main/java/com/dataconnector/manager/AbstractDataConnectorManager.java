@@ -5,6 +5,7 @@
  */
 package com.dataconnector.manager;
 
+import com.dataconnector.constans.ProvidersSupportEnum;
 import com.dataconnector.criteria.AbstractQuery;
 import com.dataconnector.criteria.delete.CommonAbstractDelete;
 import com.dataconnector.criteria.update.CommonAbstractUpdate;
@@ -22,6 +23,10 @@ public interface AbstractDataConnectorManager {
      Connection getConnection();
     
     String QuiEst();
+     
+    ContextDataConnector getContext();
+    
+    ProvidersSupportEnum getProvidersSupportEnum();
 
     //Query createQuery(CriteriaUpdate q);
 }

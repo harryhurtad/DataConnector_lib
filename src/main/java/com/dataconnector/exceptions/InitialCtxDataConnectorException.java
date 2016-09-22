@@ -9,7 +9,7 @@ package com.dataconnector.exceptions;
  *
  * @author proveedor_hhurtado
  */
-public class InitialCtxDataConnectorException extends Exception {
+public class InitialCtxDataConnectorException extends DataConnectorQueryException {
 
     /**
      * Creates a new instance of <code>InitialCtxDataConnectorException</code>

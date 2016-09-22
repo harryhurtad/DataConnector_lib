@@ -5,9 +5,10 @@
  */
 package com.dataconnector.object;
 
-import com.dataconnector.sql.AliasExpression;
-import com.dataconnector.sql.Expression;
-import com.dataconnector.sql.Selection;
+import com.dataconnector.commons.metadata.MetadataFieldDataConnector;
+import com.dataconnectorcommons.sql.AliasExpression;
+import com.dataconnectorcommons.sql.Expression;
+import com.dataconnectorcommons.sql.Selection;
 
 
 /**
@@ -25,12 +26,12 @@ public class ValueRoot implements Expression,AliasExpression {
     private final String ALIAS_SIMBOLO="AS";
     
 
-    public ValueRoot(String alias, String nameTable) {
+    public ValueRoot(String alias, MetadataFieldDataConnector nameField) {
         this.aliasTable = alias;
         concat = new StringBuilder();
         concat.append(alias);
         concat.append(".");
-        concat.append(nameTable);
+        concat.append(nameField.nameField());
     }
 
     public String getAliasTable() {

@@ -5,10 +5,12 @@
  */
 package com.dataconnector.criteria;
 
+import com.dataconnector.commons.metadata.MetdataTableDataConn;
+import com.dataconnector.exceptions.DataConnectorQueryException;
 import com.dataconnector.sql.Order;
 import com.dataconnector.sql.Predicate;
 import com.dataconnector.sql.Root;
-import com.dataconnector.sql.Selection;
+import com.dataconnectorcommons.sql.Selection;
 import java.util.List;
 
 /**
@@ -26,7 +28,7 @@ public interface CriteriaQuery extends AbstractQuery{
     CriteriaQuery where(Predicate params);
     
     @Override
-    Root from(String nombreTabla);
+    Root from(Class nombre_tabla) throws DataConnectorQueryException;
     
     @Override
     CriteriaQuery orderBy(Order... ord);

@@ -5,6 +5,7 @@
  */
 package com.dataconnector.sql;
 
+import com.dataconnectorcommons.sql.Expression;
 import com.dataconnector.object.ValueRoot;
 import java.util.List;
 

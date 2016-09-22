@@ -5,12 +5,13 @@
  */
 package com.dataconnector.criteria;
 
-import com.dataconnector.sql.AliasExpression;
-import com.dataconnector.sql.Expression;
+import com.dataconnector.exceptions.DataConnectorQueryException;
+import com.dataconnectorcommons.sql.AliasExpression;
+import com.dataconnectorcommons.sql.Expression;
 import com.dataconnector.sql.Order;
 import com.dataconnector.sql.Predicate;
 import com.dataconnector.sql.Root;
-import com.dataconnector.sql.Selection;
+import com.dataconnectorcommons.sql.Selection;
 
 /**
  *Clase que represneta un Subquery SQL
@@ -27,7 +28,7 @@ public interface SubQuery extends AbstractQuery,Expression,AliasExpression  {
     SubQuery where(Predicate params);
 
     @Override
-    Root from(String nombreTabla);
+    Root from(Class nombreTabla) throws DataConnectorQueryException;
 
     @Override
     SubQuery orderBy(Order... ord);
