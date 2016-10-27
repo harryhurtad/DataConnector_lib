@@ -5,12 +5,14 @@
  */
 package com.dataconnector.manager;
 
+import com.dataconnector.context.InitialContextDataConnector;
 import com.dataconnector.exceptions.InitialCtxDataConnectorException;
 import com.dataconnector.commons.helper.DataConnectorHelper;
 import com.dataconnector.constans.ProvidersSupportEnum;
 import com.dataconnector.sql.ProviderDataConnector;
 import com.dataconnector.sql.ProviderDataConnector;
 import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.Driver;
@@ -36,7 +38,7 @@ public class DataConnector {
      * @return
      */
     public static InitialContextDataConnector getInitialContextDataConnector() {
-        InitialContextDataConnector initialContextDataConnector = null;
+        InitialContextDataConnector initialContextDataConnector = null;  
         try {
             //Crea Wrapper del driver
            // String classNameWrapper = "com.dataconnector.helper.DataConnectorConWrap";
@@ -46,11 +48,11 @@ public class DataConnector {
             InputStream in =DataConnector.class.getResourceAsStream("/META-INF/DataConnector-conf.xml"); 
             String classContext = "com.dataconnector.context.InitialContextDataconnectorImpl";
             Class classInitialContext = Class.forName(classContext);
-            initialContextDataConnector = (InitialContextDataConnector) classInitialContext.getConstructor(new Class[]{InputStream.class}).newInstance(in);
+            initialContextDataConnector = (InitialContextDataConnector) classInitialContext.getConstructor(new Class[]{InputStream.class,ClassLoader.class}).newInstance(in,classInitialContext.getClassLoader());
             initialContextDataConnector.initialContext();
-
+            in.close();
             return initialContextDataConnector;
-        } catch (ClassNotFoundException | NoSuchMethodException | SecurityException | InitialCtxDataConnectorException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
+        } catch (ClassNotFoundException | NoSuchMethodException | SecurityException | InitialCtxDataConnectorException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException | IOException ex) {
             Logger.getLogger(DataConnector.class.getName()).log(Level.SEVERE, null, ex);
         }
         return initialContextDataConnector;

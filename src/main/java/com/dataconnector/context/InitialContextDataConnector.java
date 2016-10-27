@@ -4,9 +4,10 @@
  * and open the template in the editor.
  */
 
-package com.dataconnector.manager;
+package com.dataconnector.context;
 
 import com.dataconnector.exceptions.InitialCtxDataConnectorException;
+import com.dataconnector.manager.DataConnectorFactory;
 import java.util.Map;
 
 /**
@@ -19,6 +20,7 @@ public interface InitialContextDataConnector {
 
    
      void initialContext() throws InitialCtxDataConnectorException;
+      DataConnectorFactory createDataConnectorFactory(String dataConnectorUnitName) throws InitialCtxDataConnectorException ;
      
     
 }

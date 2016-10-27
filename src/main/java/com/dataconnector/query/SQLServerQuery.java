@@ -17,6 +17,8 @@ import com.dataconnector.object.ValueRoot;
  */
 public interface SQLServerQuery<X extends Object> extends Query<X>{
 
-    void setFieldRowNumber(ValueRoot field);
+    void setFieldRowIndex(ValueRoot field);
     void setWithNotLock(boolean root);
+    void setMaxDop(Integer noProcesor);
+    void isSelectForRowNumber(boolean responce);
 }

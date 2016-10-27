@@ -13,6 +13,7 @@ import com.dataconnector.criteria.delete.CommonAbstractDelete;
 import com.dataconnector.criteria.insert.CommonAbstractInsert;
 import com.dataconnector.criteria.update.CommonAbstractUpdate;
 import com.dataconnector.object.ValueExpression;
+import com.dataconnector.object.ValueParam;
 import com.dataconnector.object.ValueRoot;
 
 /**
@@ -68,13 +69,13 @@ public interface CriteriaBuilder {
 
     JoinPredicate menorIgualQue(ValueRoot param1, ValueRoot param2);
 
-    Predicate between(Expression param1, Expression param2);
+    Predicate between(ValueRoot field, ValueParam param1, ValueParam param2);
 
     Predicate isNull(Expression param1, Expression param2);
 
     Predicate isNotNull(Expression param1, Expression param2);
 
-    Predicate IN(String[] value);
+    Predicate IN(ValueRoot field,String[] value);
 
     <X extends Object> ParameterExpression<X> parameter(Class<X> obj, String nameParam);
     
